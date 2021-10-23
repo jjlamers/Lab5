@@ -3,7 +3,9 @@ package com.example.lab5;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +43,9 @@ public class MainActivity2 extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.Logout:
+                SharedPreferences sharedPreferences = getSharedPreferences("com.example.lab5", Context.MODE_PRIVATE);
+                sharedPreferences.edit().remove("username").apply();
+
                 Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);
                 return true;
